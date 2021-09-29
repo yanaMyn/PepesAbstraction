@@ -1,0 +1,6 @@
+framework module PepesAbstraction {
+    umbrella header "PepesAbstraction.h"
+
+    export *
+    module * { export * }
+}
