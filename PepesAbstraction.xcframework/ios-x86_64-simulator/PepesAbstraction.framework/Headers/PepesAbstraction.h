@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class PepesAbstractionModelCategoryInbox, PepesAbstractionKotlinUnit, PepesAbstractionModelInbox, PepesAbstractionModelRequestCategoryInboxStatus, PepesAbstractionModelRequestInboxCollectionStatus, PepesAbstractionModelInboxCollection, PepesAbstractionModelLanguage, PepesAbstractionKotlinThrowable, PepesAbstractionKotlinArray<T>, PepesAbstractionKotlinException, PepesAbstractionKotlinRuntimeException, PepesAbstractionKotlinIllegalStateException, PepesAbstractionModelInboxStatus, PepesAbstractionModelInboxNeo, PepesAbstractionKotlinEnumCompanion, PepesAbstractionKotlinEnum<E>, PepesAbstractionModelInboxStatusCompanion, PepesAbstractionModelInboxStatus_, PepesAbstractionModelInboxStatus_Companion;
+@class PepesAbstractionModelCategoryInbox, PepesAbstractionKotlinUnit, PepesAbstractionModelInbox, PepesAbstractionModelRequestCategoryInboxStatus, PepesAbstractionModelRequestInboxCollectionStatus, PepesAbstractionModelInboxCollection, PepesAbstractionModelLanguage, PepesAbstractionKotlinThrowable, PepesAbstractionKotlinArray<T>, PepesAbstractionKotlinException, PepesAbstractionKotlinRuntimeException, PepesAbstractionKotlinIllegalStateException, PepesAbstractionModelInboxStatus, PepesAbstractionKotlinEnumCompanion, PepesAbstractionKotlinEnum<E>, PepesAbstractionModelInboxStatusCompanion, PepesAbstractionModelInboxStatus_, PepesAbstractionModelInboxStatus_Companion;
 
-@protocol PepesAbstractionKotlinx_coroutines_coreFlow, PepesAbstractionKotlinx_coroutines_coreFlowCollector, PepesAbstractionKotlinIterator, PepesAbstractionKotlinComparable;
+@protocol PepesAbstractionKotlinx_coroutines_coreFlow, PepesAbstractionModelInboxInterface, PepesAbstractionKotlinx_coroutines_coreFlowCollector, PepesAbstractionKotlinIterator, PepesAbstractionKotlinComparable;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -348,15 +348,15 @@ __attribute__((swift_name("ModelRequestInboxCollectionStatus")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("ModelInboxCollection")))
 @interface PepesAbstractionModelInboxCollection : PepesAbstractionBase
-- (instancetype)initWithTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInboxNeo *> *)data __attribute__((swift_name("init(total_page:page:data:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<id<PepesAbstractionModelInboxInterface>> *)data __attribute__((swift_name("init(total_page:page:data:)"))) __attribute__((objc_designated_initializer));
 - (int32_t)component1 __attribute__((swift_name("component1()")));
 - (int32_t)component2 __attribute__((swift_name("component2()")));
-- (NSArray<PepesAbstractionModelInboxNeo *> *)component3 __attribute__((swift_name("component3()")));
-- (PepesAbstractionModelInboxCollection *)doCopyTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInboxNeo *> *)data __attribute__((swift_name("doCopy(total_page:page:data:)")));
+- (NSArray<id<PepesAbstractionModelInboxInterface>> *)component3 __attribute__((swift_name("component3()")));
+- (PepesAbstractionModelInboxCollection *)doCopyTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<id<PepesAbstractionModelInboxInterface>> *)data __attribute__((swift_name("doCopy(total_page:page:data:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSArray<PepesAbstractionModelInboxNeo *> *data __attribute__((swift_name("data")));
+@property (readonly) NSArray<id<PepesAbstractionModelInboxInterface>> *data __attribute__((swift_name("data")));
 @property (readonly) int32_t page __attribute__((swift_name("page")));
 @property (readonly) int32_t total_page __attribute__((swift_name("total_page")));
 @end;
@@ -420,21 +420,9 @@ __attribute__((swift_name("ModelInbox.Status")))
 + (PepesAbstractionKotlinArray<PepesAbstractionModelInboxStatus *> *)values __attribute__((swift_name("values()")));
 @end;
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("ModelInboxNeo")))
-@interface PepesAbstractionModelInboxNeo : PepesAbstractionBase
-- (instancetype)initWithId:(NSString *)id title:(NSString *)title message:(NSString *)message content:(NSString *)content status:(PepesAbstractionModelInboxStatus_ *)status datetime:(int64_t)datetime imageUrl:(NSString *)imageUrl __attribute__((swift_name("init(id:title:message:content:status:datetime:imageUrl:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)component1 __attribute__((swift_name("component1()")));
-- (NSString *)component2 __attribute__((swift_name("component2()")));
-- (NSString *)component3 __attribute__((swift_name("component3()")));
-- (NSString *)component4 __attribute__((swift_name("component4()")));
-- (PepesAbstractionModelInboxStatus_ *)component5 __attribute__((swift_name("component5()")));
-- (int64_t)component6 __attribute__((swift_name("component6()")));
-- (NSString *)component7 __attribute__((swift_name("component7()")));
-- (PepesAbstractionModelInboxNeo *)doCopyId:(NSString *)id title:(NSString *)title message:(NSString *)message content:(NSString *)content status:(PepesAbstractionModelInboxStatus_ *)status datetime:(int64_t)datetime imageUrl:(NSString *)imageUrl __attribute__((swift_name("doCopy(id:title:message:content:status:datetime:imageUrl:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
+__attribute__((swift_name("ModelInboxInterface")))
+@protocol PepesAbstractionModelInboxInterface
+@required
 @property (readonly) NSString *content __attribute__((swift_name("content")));
 @property (readonly) int64_t datetime __attribute__((swift_name("datetime")));
 @property (readonly) NSString *id __attribute__((swift_name("id")));
