@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class PepesAbstractionModelCategoryInbox, PepesAbstractionKotlinUnit, PepesAbstractionModelInbox, PepesAbstractionModelRequestCategoryInboxStatus, PepesAbstractionModelRequestInboxCollectionStatus, PepesAbstractionModelLanguage, PepesAbstractionModelSuccessRemoteInbox, PepesAbstractionKotlinThrowable, PepesAbstractionKotlinArray<T>, PepesAbstractionKotlinException, PepesAbstractionKotlinRuntimeException, PepesAbstractionKotlinIllegalStateException, PepesAbstractionModelInboxStatus, PepesAbstractionKotlinEnumCompanion, PepesAbstractionKotlinEnum<E>, PepesAbstractionModelInboxStatusCompanion;
+@class PepesAbstractionModelCategoryInbox, PepesAbstractionKotlinUnit, PepesAbstractionModelInbox, PepesAbstractionModelRequestCategoryInboxStatus, PepesAbstractionModelRequestInboxCollectionStatus, PepesAbstractionModelInboxCollection, PepesAbstractionModelLanguage, PepesAbstractionKotlinThrowable, PepesAbstractionKotlinArray<T>, PepesAbstractionKotlinException, PepesAbstractionKotlinRuntimeException, PepesAbstractionKotlinIllegalStateException, PepesAbstractionModelInboxStatus, PepesAbstractionModelInboxNeo, PepesAbstractionKotlinEnumCompanion, PepesAbstractionKotlinEnum<E>, PepesAbstractionModelInboxStatusCompanion, PepesAbstractionModelInboxStatus_, PepesAbstractionModelInboxStatus_Companion;
 
 @protocol PepesAbstractionKotlinx_coroutines_coreFlow, PepesAbstractionKotlinx_coroutines_coreFlowCollector, PepesAbstractionKotlinIterator, PepesAbstractionKotlinComparable;
 
@@ -203,31 +203,7 @@ __attribute__((swift_name("InboxRemoteDataSource")))
  @note This method converts instances of CancellationException to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (void)fetchCategoryInboxMsisdn:(NSString *)msisdn language:(PepesAbstractionModelLanguage *)language completionHandler:(void (^)(PepesAbstractionModelRequestCategoryInboxStatus * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchCategoryInbox(msisdn:language:completionHandler:)")));
-
-/**
- @note This method converts instances of CancellationException to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)fetchListInboxMsisdn:(NSString *)msisdn idCategory:(int32_t)idCategory page:(int32_t)page limit:(int32_t)limit completionHandler:(void (^)(PepesAbstractionModelRequestInboxCollectionStatus * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchListInbox(msisdn:idCategory:page:limit:completionHandler:)")));
-
-/**
- @note This method converts instances of CancellationException to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)fetchListInboxneoMsisdn:(NSString *)msisdn idCategory:(int32_t)idCategory page:(int32_t)page limit:(int32_t)limit completionHandler:(void (^)(PepesAbstractionModelSuccessRemoteInbox * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchListInboxneo(msisdn:idCategory:page:limit:completionHandler:)")));
-
-/**
- @note This method converts instances of CancellationException to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)markReadAllInboxMsisdn:(NSString *)msisdn param:(int32_t)param completionHandler:(void (^)(PepesAbstractionKotlinUnit * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("markReadAllInbox(msisdn:param:completionHandler:)")));
-
-/**
- @note This method converts instances of CancellationException to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)markReadInboxInbox:(PepesAbstractionModelInbox *)inbox completionHandler:(void (^)(PepesAbstractionKotlinUnit * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("markReadInbox(inbox:completionHandler:)")));
+- (void)fetchListInboxMsisdn:(NSString *)msisdn idCategory:(int32_t)idCategory page:(int32_t)page limit:(int32_t)limit completionHandler:(void (^)(PepesAbstractionModelInboxCollection * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchListInbox(msisdn:idCategory:page:limit:completionHandler:)")));
 @end;
 
 __attribute__((swift_name("InboxRepository")))
@@ -369,26 +345,26 @@ __attribute__((swift_name("ModelRequestInboxCollectionStatus")))
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @end;
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("ModelInboxCollection")))
+@interface PepesAbstractionModelInboxCollection : PepesAbstractionBase
+- (instancetype)initWithTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInboxNeo *> *)data __attribute__((swift_name("init(total_page:page:data:)"))) __attribute__((objc_designated_initializer));
+- (int32_t)component1 __attribute__((swift_name("component1()")));
+- (int32_t)component2 __attribute__((swift_name("component2()")));
+- (NSArray<PepesAbstractionModelInboxNeo *> *)component3 __attribute__((swift_name("component3()")));
+- (PepesAbstractionModelInboxCollection *)doCopyTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInboxNeo *> *)data __attribute__((swift_name("doCopy(total_page:page:data:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSArray<PepesAbstractionModelInboxNeo *> *data __attribute__((swift_name("data")));
+@property (readonly) int32_t page __attribute__((swift_name("page")));
+@property (readonly) int32_t total_page __attribute__((swift_name("total_page")));
+@end;
+
 __attribute__((swift_name("ModelLanguage")))
 @interface PepesAbstractionModelLanguage : PepesAbstractionBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("ModelSuccessRemoteInbox")))
-@interface PepesAbstractionModelSuccessRemoteInbox : PepesAbstractionBase
-- (instancetype)initWithTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInbox *> *)data __attribute__((swift_name("init(total_page:page:data:)"))) __attribute__((objc_designated_initializer));
-- (int32_t)component1 __attribute__((swift_name("component1()")));
-- (int32_t)component2 __attribute__((swift_name("component2()")));
-- (NSArray<PepesAbstractionModelInbox *> *)component3 __attribute__((swift_name("component3()")));
-- (PepesAbstractionModelSuccessRemoteInbox *)doCopyTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInbox *> *)data __attribute__((swift_name("doCopy(total_page:page:data:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSArray<PepesAbstractionModelInbox *> *data __attribute__((swift_name("data")));
-@property (readonly) int32_t page __attribute__((swift_name("page")));
-@property (readonly) int32_t total_page __attribute__((swift_name("total_page")));
 @end;
 
 __attribute__((swift_name("Kotlinx_coroutines_coreFlow")))
@@ -444,6 +420,30 @@ __attribute__((swift_name("ModelInbox.Status")))
 + (PepesAbstractionKotlinArray<PepesAbstractionModelInboxStatus *> *)values __attribute__((swift_name("values()")));
 @end;
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("ModelInboxNeo")))
+@interface PepesAbstractionModelInboxNeo : PepesAbstractionBase
+- (instancetype)initWithId:(NSString *)id title:(NSString *)title message:(NSString *)message content:(NSString *)content status:(PepesAbstractionModelInboxStatus_ *)status datetime:(int64_t)datetime imageUrl:(NSString *)imageUrl __attribute__((swift_name("init(id:title:message:content:status:datetime:imageUrl:)"))) __attribute__((objc_designated_initializer));
+- (NSString *)component1 __attribute__((swift_name("component1()")));
+- (NSString *)component2 __attribute__((swift_name("component2()")));
+- (NSString *)component3 __attribute__((swift_name("component3()")));
+- (NSString *)component4 __attribute__((swift_name("component4()")));
+- (PepesAbstractionModelInboxStatus_ *)component5 __attribute__((swift_name("component5()")));
+- (int64_t)component6 __attribute__((swift_name("component6()")));
+- (NSString *)component7 __attribute__((swift_name("component7()")));
+- (PepesAbstractionModelInboxNeo *)doCopyId:(NSString *)id title:(NSString *)title message:(NSString *)message content:(NSString *)content status:(PepesAbstractionModelInboxStatus_ *)status datetime:(int64_t)datetime imageUrl:(NSString *)imageUrl __attribute__((swift_name("doCopy(id:title:message:content:status:datetime:imageUrl:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *content __attribute__((swift_name("content")));
+@property (readonly) int64_t datetime __attribute__((swift_name("datetime")));
+@property (readonly) NSString *id __attribute__((swift_name("id")));
+@property (readonly) NSString *imageUrl __attribute__((swift_name("imageUrl")));
+@property (readonly) NSString *message __attribute__((swift_name("message")));
+@property (readonly) PepesAbstractionModelInboxStatus_ *status __attribute__((swift_name("status")));
+@property (readonly) NSString *title __attribute__((swift_name("title")));
+@end;
+
 __attribute__((swift_name("Kotlinx_coroutines_coreFlowCollector")))
 @protocol PepesAbstractionKotlinx_coroutines_coreFlowCollector
 @required
@@ -479,6 +479,28 @@ __attribute__((swift_name("ModelInbox.StatusCompanion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) PepesAbstractionModelInboxStatusCompanion *shared __attribute__((swift_name("shared")));
 - (PepesAbstractionModelInboxStatus *)getParam:(NSString * _Nullable)param __attribute__((swift_name("get(param:)")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("ModelInboxStatus")))
+@interface PepesAbstractionModelInboxStatus_ : PepesAbstractionKotlinEnum<PepesAbstractionModelInboxStatus_ *>
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly, getter=companion) PepesAbstractionModelInboxStatus_Companion *companion __attribute__((swift_name("companion")));
+@property (class, readonly) PepesAbstractionModelInboxStatus_ *unread __attribute__((swift_name("unread")));
+@property (class, readonly) PepesAbstractionModelInboxStatus_ *read __attribute__((swift_name("read")));
++ (PepesAbstractionKotlinArray<PepesAbstractionModelInboxStatus_ *> *)values __attribute__((swift_name("values()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("ModelInboxStatus.Companion")))
+@interface PepesAbstractionModelInboxStatus_Companion : PepesAbstractionBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) PepesAbstractionModelInboxStatus_Companion *shared __attribute__((swift_name("shared")));
+- (PepesAbstractionModelInboxStatus_ *)getParam:(NSString * _Nullable)param __attribute__((swift_name("get(param:)")));
 @end;
 
 #pragma pop_macro("_Nullable_result")
