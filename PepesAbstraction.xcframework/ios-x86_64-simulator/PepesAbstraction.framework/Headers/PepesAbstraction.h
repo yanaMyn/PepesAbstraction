@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class PepesAbstractionModelCategoryInbox, PepesAbstractionKotlinUnit, PepesAbstractionModelInbox, PepesAbstractionModelRequestCategoryInboxStatus, PepesAbstractionModelRequestInboxCollectionStatus, PepesAbstractionModelLanguage, PepesAbstractionKotlinThrowable, PepesAbstractionKotlinArray<T>, PepesAbstractionKotlinException, PepesAbstractionKotlinRuntimeException, PepesAbstractionKotlinIllegalStateException, PepesAbstractionModelInboxStatus, PepesAbstractionKotlinEnumCompanion, PepesAbstractionKotlinEnum<E>, PepesAbstractionModelInboxStatusCompanion;
+@class PepesAbstractionModelCategoryInbox, PepesAbstractionKotlinUnit, PepesAbstractionModelInbox, PepesAbstractionModelRequestCategoryInboxStatus, PepesAbstractionModelRequestInboxCollectionStatus, PepesAbstractionModelLanguage, PepesAbstractionModelSuccessRemoteInbox, PepesAbstractionKotlinThrowable, PepesAbstractionKotlinArray<T>, PepesAbstractionKotlinException, PepesAbstractionKotlinRuntimeException, PepesAbstractionKotlinIllegalStateException, PepesAbstractionModelInboxStatus, PepesAbstractionKotlinEnumCompanion, PepesAbstractionKotlinEnum<E>, PepesAbstractionModelInboxStatusCompanion;
 
 @protocol PepesAbstractionKotlinx_coroutines_coreFlow, PepesAbstractionKotlinx_coroutines_coreFlowCollector, PepesAbstractionKotlinIterator, PepesAbstractionKotlinComparable;
 
@@ -215,6 +215,12 @@ __attribute__((swift_name("InboxRemoteDataSource")))
  @note This method converts instances of CancellationException to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
+- (void)fetchListInboxneoMsisdn:(NSString *)msisdn idCategory:(int32_t)idCategory page:(int32_t)page limit:(int32_t)limit completionHandler:(void (^)(PepesAbstractionModelSuccessRemoteInbox * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchListInboxneo(msisdn:idCategory:page:limit:completionHandler:)")));
+
+/**
+ @note This method converts instances of CancellationException to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
 - (void)markReadAllInboxMsisdn:(NSString *)msisdn param:(int32_t)param completionHandler:(void (^)(PepesAbstractionKotlinUnit * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("markReadAllInbox(msisdn:param:completionHandler:)")));
 
 /**
@@ -367,6 +373,22 @@ __attribute__((swift_name("ModelLanguage")))
 @interface PepesAbstractionModelLanguage : PepesAbstractionBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("ModelSuccessRemoteInbox")))
+@interface PepesAbstractionModelSuccessRemoteInbox : PepesAbstractionBase
+- (instancetype)initWithTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInbox *> *)data __attribute__((swift_name("init(total_page:page:data:)"))) __attribute__((objc_designated_initializer));
+- (int32_t)component1 __attribute__((swift_name("component1()")));
+- (int32_t)component2 __attribute__((swift_name("component2()")));
+- (NSArray<PepesAbstractionModelInbox *> *)component3 __attribute__((swift_name("component3()")));
+- (PepesAbstractionModelSuccessRemoteInbox *)doCopyTotal_page:(int32_t)total_page page:(int32_t)page data:(NSArray<PepesAbstractionModelInbox *> *)data __attribute__((swift_name("doCopy(total_page:page:data:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSArray<PepesAbstractionModelInbox *> *data __attribute__((swift_name("data")));
+@property (readonly) int32_t page __attribute__((swift_name("page")));
+@property (readonly) int32_t total_page __attribute__((swift_name("total_page")));
 @end;
 
 __attribute__((swift_name("Kotlinx_coroutines_coreFlow")))
